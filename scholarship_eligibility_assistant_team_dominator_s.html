@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scholarship Eligibility Assistant | Team Dominator's</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  
+  <style>
+    /* Clean Professional White Theme with Orange Text & Accents */
+    body {
+      background-color: #fbfbfc;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.08) 0px, transparent 40%),
+        radial-gradient(at 100% 0%, rgba(251, 146, 60, 0.07) 0px, transparent 40%),
+        radial-gradient(at 50% 100%, rgba(234, 88, 12, 0.05) 0px, transparent 50%),
+        linear-gradient(#f1f5f9 1px, transparent 1px),
+        linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+      color: #1e293b;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Clean Card */
+    .white-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      transition: all 0.2s ease;
+    }
+    .white-card:hover {
+      border-color: #fdba74;
+      box-shadow: 0 8px 25px -4px rgba(234, 88, 12, 0.12);
+    }
+
+    /* Orange Buttons */
+    .btn-orange {
+      background-color: #ea580c;
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 8px 16px;
+      transition: background-color 0.2s ease;
+    }
+    .btn-orange:hover {
+      background-color: #c2410c;
+    }
+
+    /* Subtle Orange Pill Button */
+    .btn-subtle {
+      background-color: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #c2410c;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .btn-subtle:hover {
+      background-color: #ffedd5;
+    }
+
+    /* Clean Inputs */
+    .form-input {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      color: #0f172a;
+      border-radius: 8px;
+      padding: 7px 10px;
+      transition: border-color 0.2s ease;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #ea580c;
+      box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Clean White Navbar with Orange Accents -->
+  <header class="bg-white/95 border-b border-slate-200 sticky top-0 z-30 px-4 py-3 backdrop-blur-md shadow-sm">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Student Details -->
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-orange-600 flex items-center justify-center font-bold text-white text-lg shadow-sm">
+          🎓
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-extrabold text-base text-slate-900">
+              Scholarship<span class="text-orange-600">Assistant</span>
+            </h1>
+            <span class="text-[10px] bg-orange-100 text-orange-800 border border-orange-200 px-2 py-0.5 rounded font-bold">
+              Team Dominator's
+            </span>
+          </div>
+          <p class="text-xs text-slate-500">
+            Sec: K4P26ME · Lead: <span class="text-orange-700 font-medium">Ayush Pathania (12622597)</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="flex items-center gap-1.5 text-xs font-semibold">
+        <button id="tab-btn-home" class="px-3 py-1.5 rounded-lg bg-orange-600 text-white shadow-sm">
+          Home
+        </button>
+        <button id="tab-btn-profile" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-orange-600 hover:bg-orange-50">
+          Profile & Matcher
+        </button>
+        <button id="tab-btn-all" class="px-3 py-1.5 rounded-lg text-slate-600 hover:text-orange-600 hover:bg-orange-50">
+          All Scholarships
+        </button>
+        <button id="tab-btn-admin" class="px-3 py-1.5 rounded-lg text-amber-700 bg-amber-50 hover:bg-amber-100 flex items-center gap-1 border border-amber-200">
+          <span>🔒</span>
+          <span id="nav-admin-text">Admin</span>
+        </button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-grow max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
+
+    <!-- ======================================================= -->
+    <!-- TAB 1: HOME OVERVIEW                                    -->
+    <!-- ======================================================= -->
+    <div id="view-home" class="space-y-6">
+      
+      <!-- Welcome Hero Card -->
+      <div class="white-card p-6 sm:p-8 space-y-3 relative overflow-hidden bg-gradient-to-r from-white via-orange-50/30 to-white">
+        <span class="text-[11px] font-bold text-orange-700 bg-orange-100 border border-orange-200 px-2.5 py-1 rounded-full">
+          Academic Year 2026-27 Portal
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          Find Eligible <span class="text-orange-600">Scholarships</span> in Seconds
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
+          Students often miss scholarships because requirements are scattered across circulars and PDF notices. Enter your academic percentage, course, and income to quickly see which scholarships match your criteria!
+        </p>
+        <div class="flex items-center gap-3 pt-2">
+          <button id="home-btn-check" class="btn-orange text-xs sm:text-sm">
+            Check My Eligibility Now →
+          </button>
+          <button id="home-btn-browse" class="btn-subtle text-xs sm:text-sm">
+            Browse All Scholarships
+          </button>
+        </div>
+      </div>
+
+      <!-- Key Portal Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="white-card p-4 text-center">
+          <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Active Scholarships</p>
+          <p class="text-2xl font-black text-slate-900 mt-1">8 Schemes</p>
+          <p class="text-[11px] text-orange-600 font-medium">Government & Corporate Funds</p>
+        </div>
+        <div class="white-card p-4 text-center">
+          <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Max Annual Scholarship</p>
+          <p class="text-2xl font-black text-orange-600 mt-1">₹2,00,000</p>
+          <p class="text-[11px] text-slate-500">Per Eligible Student</p>
+        </div>
+        <div class="white-card p-4 text-center">
+          <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Eligibility Verification</p>
+          <p class="text-2xl font-black text-emerald-600 mt-1">Instant</p>
+          <p class="text-[11px] text-slate-500">Rule-based Algorithm</p>
+        </div>
+      </div>
+
+      <!-- Featured Scholarships List -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-orange-600"></span>
+          <span>Featured Scholarships</span>
+        </h3>
+        <div id="home-featured-list" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 2: PROFILE & ELIGIBILITY MATCHER                    -->
+    <!-- ======================================================= -->
+    <div id="view-profile" class="hidden space-y-6">
+      
+      <div class="white-card p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+        <div>
+          <h2 class="text-lg font-bold text-slate-900">
+            Student Profile & <span class="text-orange-600">Eligibility Matcher</span>
+          </h2>
+          <p class="text-xs text-slate-500">Enter your details below to check which scholarships you qualify for.</p>
+        </div>
+        <button id="btn-load-demo" class="btn-subtle text-xs">
+          Load Sample Profile (Ayush)
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Left: Input Form (5 cols) -->
+        <div class="md:col-span-5">
+          <form id="profile-form" class="white-card p-4 space-y-3.5">
+            <h3 class="text-xs font-bold text-orange-600 uppercase tracking-wider border-b border-slate-100 pb-2">
+              Student Academic Credentials
+            </h3>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Full Name</label>
+              <input type="text" id="prof-name" value="Ayush Pathania" class="form-input w-full text-xs" required>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Registration / Roll No</label>
+              <input type="text" id="prof-reg" value="12622597" class="form-input w-full text-xs" required>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Degree Level</label>
+                <select id="prof-level" class="form-input w-full text-xs">
+                  <option value="Undergraduate" selected>Undergraduate</option>
+                  <option value="Postgraduate">Postgraduate</option>
+                  <option value="Diploma">Diploma</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-slate-700 mb-1">Gender</label>
+                <select id="prof-gender" class="form-input w-full text-xs">
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Score Slider -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700">Academic Score (%):</span>
+                <span id="score-display" class="font-bold text-orange-600">82%</span>
+              </div>
+              <input type="range" id="prof-score" min="40" max="100" value="82" class="w-full accent-orange-600 cursor-pointer">
+            </div>
+
+            <!-- Income Slider -->
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-700">Annual Family Income:</span>
+                <span id="income-display" class="font-bold text-orange-600">₹3,50,000</span>
+              </div>
+              <input type="range" id="prof-income" min="50000" max="1200000" step="25000" value="350000" class="w-full accent-orange-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>₹50k</span>
+                <span>₹4.5L (Need)</span>
+                <span>₹8L+</span>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Category</label>
+              <select id="prof-category" class="form-input w-full text-xs">
+                <option value="General" selected>General</option>
+                <option value="OBC">OBC</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="EWS">EWS</option>
+              </select>
+            </div>
+
+            <button type="button" id="btn-check-eligibility" class="btn-orange w-full text-xs font-bold py-2 mt-2">
+              Check Eligible Scholarships
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Results (7 cols) -->
+        <div class="md:col-span-7 space-y-4">
+          
+          <!-- Result Summary Box -->
+          <div class="white-card p-4 border-l-4 border-emerald-500 flex items-center justify-between">
+            <div>
+              <h4 id="result-summary-title" class="font-bold text-sm text-slate-900">Eligible Scholarships</h4>
+              <p id="result-summary-sub" class="text-xs text-slate-500">Matching criteria based on your profile details.</p>
+            </div>
+            <div class="text-right">
+              <span id="result-count" class="text-2xl font-black text-orange-600">0</span>
+              <span class="text-[10px] text-slate-400 block font-semibold">Eligible</span>
+            </div>
+          </div>
+
+          <!-- Eligible List Container -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-700 flex items-center gap-1.5">
+              <span>✓ Verified Eligible Scholarships:</span>
+            </h4>
+            <div id="eligible-cards-box" class="space-y-3">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- Ineligible / Reason List -->
+          <div class="space-y-2 pt-2">
+            <button id="toggle-ineligible-btn" class="text-xs font-semibold text-orange-700 hover:text-orange-800 hover:underline">
+              Show Schemes You Don't Qualify For Yet
+            </button>
+            <div id="ineligible-cards-box" class="hidden space-y-2">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 3: ALL SCHOLARSHIPS DIRECTORY                       -->
+    <!-- ======================================================= -->
+    <div id="view-all" class="hidden space-y-4">
+      
+      <div class="white-card p-4 space-y-3">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+          <h2 class="text-lg font-bold text-slate-900">
+            All Scholarships <span class="text-orange-600">Directory</span>
+          </h2>
+          <span class="text-xs bg-orange-100 text-orange-800 border border-orange-200 px-2 py-1 rounded font-bold">
+            Total Schemes: <strong id="total-count-label" class="text-orange-700">8</strong>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <input type="text" id="dir-search" placeholder="Search by scholarship name or provider..." class="form-input text-xs w-full">
+          <select id="dir-cat" class="form-input text-xs w-full">
+            <option value="All">All Categories</option>
+            <option value="Merit-Based">Merit-Based</option>
+            <option value="Need-Based">Need-Based</option>
+            <option value="Girls in STEM">Girls in STEM</option>
+            <option value="Special Category">Special Category (SC/ST)</option>
+          </select>
+          <select id="dir-sort" class="form-input text-xs w-full">
+            <option value="deadline">Sort by Deadline (Nearest)</option>
+            <option value="amount">Sort by Annual Scholarship (Highest)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Directory Cards Grid -->
+      <div id="directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Populated by JS -->
+      </div>
+
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- TAB 4: ADMIN PORTAL (PROTECTED)                         -->
+    <!-- ======================================================= -->
+    <div id="view-admin" class="hidden space-y-4">
+      
+      <div class="white-card p-4 flex items-center justify-between border-l-4 border-amber-500">
+        <div>
+          <h2 class="text-lg font-bold text-slate-900">
+            Administrator <span class="text-orange-600">Portal</span>
+          </h2>
+          <p class="text-xs text-slate-500">Manage scholarship database (Add, Edit, Delete).</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="admin-add-btn" class="btn-orange text-xs font-bold">
+            + Add Scholarship
+          </button>
+          <button id="admin-lock-btn" class="btn-subtle text-xs text-rose-700 hover:bg-rose-50 border-rose-200">
+            Lock Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- Admin Table -->
+      <div class="white-card overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-50 text-slate-600 text-[11px] uppercase font-bold border-b border-slate-200">
+              <tr>
+                <th class="py-2.5 px-3">Scholarship Name</th>
+                <th class="py-2.5 px-3">Category</th>
+                <th class="py-2.5 px-3 text-orange-700">Annual Scholarship</th>
+                <th class="py-2.5 px-3">Min Marks</th>
+                <th class="py-2.5 px-3">Max Income</th>
+                <th class="py-2.5 px-3">Deadline</th>
+                <th class="py-2.5 px-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="admin-table-body" class="divide-y divide-slate-100">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ======================================================= -->
+  <!-- MODALS                                                  -->
+  <!-- ======================================================= -->
+
+  <!-- 1. Admin Login Modal -->
+  <div id="modal-admin-login" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="white-card max-w-sm w-full p-6 space-y-3 text-center shadow-xl">
+      <div class="text-2xl">🔒</div>
+      <h3 class="font-bold text-slate-900 text-base">Admin Login Required</h3>
+      <p class="text-xs text-slate-500">
+        This area is restricted to faculty coordinators so general visitors cannot alter scholarships.
+      </p>
+
+
+
+      <form id="admin-login-form" class="space-y-2 text-left">
+        <div>
+          <label class="block text-xs font-medium text-slate-700 mb-0.5">Username</label>
+          <input type="text" id="login-user" class="form-input w-full text-xs" required>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-700 mb-0.5">Password</label>
+          <input type="password" id="login-pass" class="form-input w-full text-xs" required>
+        </div>
+        <p id="login-error" class="text-xs text-rose-600 hidden text-center">Incorrect username or password.</p>
+        
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" id="login-cancel-btn" class="btn-subtle text-xs">Cancel</button>
+          <button type="submit" class="btn-orange text-xs font-bold">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Admin Add/Edit Scholarship Modal -->
+  <div id="modal-upsert" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="white-card max-w-md w-full p-5 space-y-3 max-h-[90vh] overflow-y-auto shadow-xl">
+      <h3 id="upsert-title-heading" class="font-bold text-slate-900 text-sm border-b border-slate-100 pb-2">
+        Add Scholarship
+      </h3>
+
+      <form id="upsert-form" class="space-y-2.5 text-xs">
+        <input type="hidden" id="edit-id">
+
+        <div>
+          <label class="block font-medium text-slate-700 mb-0.5">Scholarship Title</label>
+          <input type="text" id="upsert-title" class="form-input w-full text-xs" required>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-700 mb-0.5">Provider / Ministry</label>
+          <input type="text" id="upsert-provider" class="form-input w-full text-xs" required>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Category</label>
+            <select id="upsert-category" class="form-input w-full text-xs">
+              <option value="Merit-Based">Merit-Based</option>
+              <option value="Need-Based">Need-Based</option>
+              <option value="Girls in STEM">Girls in STEM</option>
+              <option value="Special Category">Special Category</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Annual Scholarship (₹)</label>
+            <input type="number" id="upsert-amount" class="form-input w-full text-xs" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Min Marks (%)</label>
+            <input type="number" id="upsert-minscore" min="0" max="100" class="form-input w-full text-xs" required>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Max Family Income (₹)</label>
+            <input type="number" id="upsert-maxincome" class="form-input w-full text-xs" required>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Education Level</label>
+            <select id="upsert-level" class="form-input w-full text-xs">
+              <option value="Undergraduate">Undergraduate</option>
+              <option value="Postgraduate">Postgraduate</option>
+              <option value="Any">Any</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-700 mb-0.5">Deadline</label>
+            <input type="date" id="upsert-deadline" class="form-input w-full text-xs" required>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" id="upsert-cancel-btn" class="btn-subtle text-xs">Cancel</button>
+          <button type="submit" class="btn-orange text-xs font-bold">Save Scholarship</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. In-Page Delete Confirm Modal -->
+  <div id="modal-confirm" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="white-card max-w-xs w-full p-5 text-center space-y-3 shadow-xl">
+      <div class="text-xl">⚠️</div>
+      <h4 class="font-bold text-slate-900 text-sm">Delete Scholarship?</h4>
+      <p id="confirm-msg" class="text-xs text-slate-600">Are you sure you want to delete this scholarship?</p>
+      <div class="flex justify-center gap-2 pt-1">
+        <button id="confirm-cancel" class="btn-subtle text-xs">Cancel</button>
+        <button id="confirm-ok" class="btn-orange text-xs font-bold">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Simple Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden bg-slate-900 text-white text-xs px-4 py-2.5 rounded-lg shadow-lg border border-slate-700"></div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-200 bg-white py-3 text-center text-xs text-slate-500">
+    Scholarship Eligibility Assistant · Team Dominator's (K4P26ME) · Ayush Pathania (12622597)
+  </footer>
+
+  <!-- ======================================================= -->
+  <!-- JAVASCRIPT CODE                                         -->
+  <!-- ======================================================= -->
+  <script>
+    // 1. Initial Scholarships Database
+    const defaultScholarships = [
+      {
+        id: "SCH-1",
+        title: "National Merit-cum-Means Scholarship",
+        provider: "Department of Higher Education",
+        category: "Merit-Based",
+        amount: 50000,
+        minScore: 75,
+        maxIncome: 450000,
+        level: "Undergraduate",
+        deadline: "2026-12-15",
+        gender: "Any"
+      },
+      {
+        id: "SCH-2",
+        title: "AICTE Pragati Scholarship for Girls in Tech",
+        provider: "AICTE Ministry of Education",
+        category: "Girls in STEM",
+        amount: 50000,
+        minScore: 60,
+        maxIncome: 800000,
+        level: "Undergraduate",
+        deadline: "2026-11-30",
+        gender: "Female"
+      },
+      {
+        id: "SCH-3",
+        title: "Central Sector University Scholarship",
+        provider: "Ministry of Education",
+        category: "Merit-Based",
+        amount: 20000,
+        minScore: 80,
+        maxIncome: 450000,
+        level: "Undergraduate",
+        deadline: "2026-12-31",
+        gender: "Any"
+      },
+      {
+        id: "SCH-4",
+        title: "Post-Matric Scholarship for SC/ST",
+        provider: "Ministry of Social Justice",
+        category: "Special Category",
+        amount: 85000,
+        minScore: 50,
+        maxIncome: 250000,
+        level: "Undergraduate",
+        deadline: "2027-01-15",
+        gender: "Any"
+      },
+      {
+        id: "SCH-5",
+        title: "Siemens Future Engineers CSR Scholarship",
+        provider: "Siemens India Foundation",
+        category: "Need-Based",
+        amount: 120000,
+        minScore: 60,
+        maxIncome: 300000,
+        level: "Undergraduate",
+        deadline: "2026-11-25",
+        gender: "Any"
+      },
+      {
+        id: "SCH-6",
+        title: "Google Women Techmakers Fellowship",
+        provider: "Google India",
+        category: "Girls in STEM",
+        amount: 200000,
+        minScore: 75,
+        maxIncome: 1200000,
+        level: "Undergraduate",
+        deadline: "2026-12-28",
+        gender: "Female"
+      },
+      {
+        id: "SCH-7",
+        title: "Saksham Scholarship for Specially Abled",
+        provider: "AICTE",
+        category: "Special Category",
+        amount: 50000,
+        minScore: 50,
+        maxIncome: 800000,
+        level: "Undergraduate",
+        deadline: "2026-12-20",
+        gender: "Any"
+      },
+      {
+        id: "SCH-8",
+        title: "Tata Trusts Higher Education Grant",
+        provider: "Sir Ratan Tata Trust",
+        category: "Need-Based",
+        amount: 60000,
+        minScore: 70,
+        maxIncome: 400000,
+        level: "Postgraduate",
+        deadline: "2026-12-05",
+        gender: "Any"
+      }
+    ];
+
+    let scholarships = [];
+    let isAdminUnlocked = false;
+    let deleteTargetId = null;
+
+    // Load LocalStorage
+    function initData() {
+      try {
+        const stored = localStorage.getItem("SEA_DATA_WHITE_ORANGE");
+        if (stored) {
+          scholarships = JSON.parse(stored);
+        } else {
+          scholarships = [...defaultScholarships];
+          saveData();
+        }
+      } catch (e) {
+        scholarships = [...defaultScholarships];
+      }
+    }
+
+    function saveData() {
+      try {
+        localStorage.setItem("SEA_DATA_WHITE_ORANGE", JSON.stringify(scholarships));
+      } catch (e) {
+        console.warn("LocalStorage save error", e);
+      }
+    }
+
+    // Toast helper
+    function showNotification(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.remove("hidden");
+      setTimeout(() => toast.classList.add("hidden"), 3000);
+    }
+
+    // 2. Tab Navigation
+    function setTab(tab) {
+      document.getElementById("view-home").classList.add("hidden");
+      document.getElementById("view-profile").classList.add("hidden");
+      document.getElementById("view-all").classList.add("hidden");
+      document.getElementById("view-admin").classList.add("hidden");
+
+      document.getElementById(`view-${tab}`).classList.remove("hidden");
+
+      const btns = ["home", "profile", "all", "admin"];
+      btns.forEach(b => {
+        const btn = document.getElementById(`tab-btn-${b}`);
+        if (b === tab) {
+          btn.className = "px-3 py-1.5 rounded-lg bg-orange-600 text-white font-semibold shadow-sm";
+        } else {
+          btn.className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-orange-600 hover:bg-orange-50 font-semibold";
+        }
+      });
+
+      if (tab === "profile") {
+        checkStudentEligibility();
+      } else if (tab === "all") {
+        renderDirectory();
+      } else if (tab === "admin") {
+        if (!isAdminUnlocked) {
+          document.getElementById("modal-admin-login").classList.remove("hidden");
+        } else {
+          renderAdminTable();
+        }
+      }
+    }
+
+    // 3. Eligibility Checking Engine
+    function checkStudentEligibility() {
+      const name = document.getElementById("prof-name").value.trim() || "Student";
+      const score = parseInt(document.getElementById("prof-score").value);
+      const income = parseInt(document.getElementById("prof-income").value);
+      const level = document.getElementById("prof-level").value;
+      const gender = document.getElementById("prof-gender").value;
+
+      const eligible = [];
+      const ineligible = [];
+
+      scholarships.forEach(s => {
+        const reasons = [];
+
+        // Condition 1: Academic Marks Check
+        if (score < s.minScore) {
+          reasons.push(`Minimum ${s.minScore}% marks required (you entered ${score}%)`);
+        }
+
+        // Condition 2: Income Ceiling Check
+        if (income > s.maxIncome) {
+          reasons.push(`Family income exceeds limit of ₹${s.maxIncome.toLocaleString('en-IN')}`);
+        }
+
+        // Condition 3: Degree Level Check
+        if (s.level !== "Any" && s.level !== level) {
+          reasons.push(`Restricted to ${s.level} students only`);
+        }
+
+        // Condition 4: Gender Requirement Check
+        if (s.gender === "Female" && gender !== "Female") {
+          reasons.push("Reserved for Female students only");
+        }
+
+        if (reasons.length === 0) {
+          eligible.push(s);
+        } else {
+          ineligible.push({ s, reasons });
+        }
+      });
+
+      // Update counters & UI
+      document.getElementById("result-count").textContent = eligible.length;
+      document.getElementById("result-summary-title").textContent = `${eligible.length} Scholarships Matched for ${name}`;
+      document.getElementById("result-summary-sub").textContent = `Evaluated with ${score}% marks and ₹${income.toLocaleString('en-IN')} annual income.`;
+
+      // Render eligible cards
+      const elBox = document.getElementById("eligible-cards-box");
+      if (eligible.length === 0) {
+        elBox.innerHTML = `<div class="white-card p-4 text-center text-xs text-slate-500">No scholarships matched these exact criteria. Try adjusting your score or income.</div>`;
+      } else {
+        elBox.innerHTML = eligible.map(s => `
+          <div class="white-card p-4 border-l-4 border-emerald-500 space-y-1.5">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+                  ✓ 100% Eligible
+                </span>
+                <h5 class="text-sm font-bold text-slate-900 mt-1">${s.title}</h5>
+                <p class="text-[11px] text-slate-500">${s.provider} · Category: <span class="text-orange-700 font-semibold">${s.category}</span></p>
+              </div>
+              <div class="text-right">
+                <span class="text-sm font-bold text-orange-600">₹${s.amount.toLocaleString('en-IN')}</span>
+                <span class="text-[10px] text-slate-400 block font-medium">Annual Scholarship</span>
+              </div>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-600 pt-1 border-t border-slate-100">
+              <span>Min Score: <strong class="text-slate-800">${s.minScore}%</strong> | Max Inc: <strong class="text-slate-800">₹${s.maxIncome.toLocaleString('en-IN')}</strong></span>
+              <span class="text-orange-700 font-mono font-medium">Deadline: ${s.deadline}</span>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Render ineligible cards
+      const inelBox = document.getElementById("ineligible-cards-box");
+      inelBox.innerHTML = ineligible.map(item => `
+        <div class="white-card p-3 border-l-4 border-rose-400 text-xs space-y-1 bg-rose-50/30">
+          <div class="flex justify-between font-bold text-slate-800">
+            <span>${item.s.title}</span>
+            <span class="text-orange-600">₹${item.s.amount.toLocaleString('en-IN')}</span>
+          </div>
+          <div class="text-[11px] text-rose-700 bg-rose-50 p-1.5 rounded border border-rose-100">
+            <strong>Why not eligible:</strong>
+            <ul class="list-disc list-inside mt-0.5">
+              ${item.reasons.map(r => `<li>${r}</li>`).join("")}
+            </ul>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // 4. Directory Search & Filters
+    function renderDirectory() {
+      const search = document.getElementById("dir-search").value.toLowerCase();
+      const cat = document.getElementById("dir-cat").value;
+      const sort = document.getElementById("dir-sort").value;
+
+      let list = scholarships.filter(s => {
+        const matchText = s.title.toLowerCase().includes(search) || s.provider.toLowerCase().includes(search);
+        const matchCat = (cat === "All") || (s.category === cat);
+        return matchText && matchCat;
+      });
+
+      if (sort === "deadline") {
+        list.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+      } else if (sort === "amount") {
+        list.sort((a, b) => b.amount - a.amount);
+      }
+
+      document.getElementById("total-count-label").textContent = list.length;
+      const grid = document.getElementById("directory-grid");
+
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full white-card p-6 text-center text-xs text-slate-500">No scholarships found matching your search.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(s => `
+        <div class="white-card p-4 flex flex-col justify-between space-y-3">
+          <div>
+            <div class="flex justify-between items-center text-[10px] text-slate-500 mb-1">
+              <span class="bg-orange-100 text-orange-800 font-bold px-2 py-0.5 rounded border border-orange-200">${s.category}</span>
+              <span class="font-mono text-slate-600 font-medium">${s.deadline}</span>
+            </div>
+            <h4 class="text-sm font-bold text-slate-900 mt-1 leading-snug">${s.title}</h4>
+            <p class="text-[11px] text-slate-500 mt-0.5">${s.provider}</p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-100 flex justify-between items-center text-xs">
+            <div>
+              <span class="text-[9px] uppercase text-slate-400 block font-semibold">Annual Scholarship</span>
+              <span class="text-sm font-bold text-orange-600">₹${s.amount.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="text-right text-[10px] text-slate-600">
+              <span>Score: <strong class="text-slate-800">${s.minScore}%</strong></span><br>
+              <span>Max Inc: <strong class="text-slate-800">₹${s.maxIncome.toLocaleString('en-IN')}</strong></span>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // 5. Featured Home Cards
+    function renderHomeFeatured() {
+      const box = document.getElementById("home-featured-list");
+      if (!box) return;
+      box.innerHTML = scholarships.slice(0, 3).map(s => `
+        <div class="white-card p-4 space-y-2">
+          <span class="text-[10px] font-bold bg-orange-100 text-orange-800 px-2 py-0.5 rounded border border-orange-200">
+            ${s.category}
+          </span>
+          <h4 class="text-xs font-bold text-slate-900 mt-1 line-clamp-1">${s.title}</h4>
+          <p class="text-[10px] text-slate-500 line-clamp-1">${s.provider}</p>
+          <div class="pt-1 flex justify-between items-center text-xs border-t border-slate-100">
+            <span class="font-bold text-orange-600">₹${s.amount.toLocaleString('en-IN')}</span>
+            <span class="text-[10px] text-slate-500 font-mono font-medium">${s.deadline}</span>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // 6. Admin Table Render & Actions
+    function renderAdminTable() {
+      const tbody = document.getElementById("admin-table-body");
+      if (!tbody) return;
+
+      tbody.innerHTML = scholarships.map(s => `
+        <tr class="hover:bg-slate-50">
+          <td class="py-2.5 px-3">
+            <div class="font-bold text-slate-900">${s.title}</div>
+            <div class="text-[10px] text-slate-500">${s.provider}</div>
+          </td>
+          <td class="py-2.5 px-3">
+            <span class="text-[10px] px-2 py-0.5 rounded bg-orange-100 text-orange-800 font-semibold border border-orange-200">
+              ${s.category}
+            </span>
+          </td>
+          <td class="py-2.5 px-3 font-bold text-orange-600">₹${s.amount.toLocaleString('en-IN')}</td>
+          <td class="py-2.5 px-3">${s.minScore}%</td>
+          <td class="py-2.5 px-3">₹${s.maxIncome.toLocaleString('en-IN')}</td>
+          <td class="py-2.5 px-3 font-mono text-[11px] text-slate-600">${s.deadline}</td>
+          <td class="py-2.5 px-3 text-right">
+            <button onclick="editScholarship('${s.id}')" class="px-2 py-0.5 rounded bg-orange-100 text-orange-800 hover:bg-orange-200 mr-1 text-[10px] font-bold border border-orange-200">Edit</button>
+            <button onclick="deleteScholarship('${s.id}')" class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 hover:bg-rose-200 text-[10px] font-bold border border-rose-200">Delete</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    window.editScholarship = function(id) {
+      const s = scholarships.find(item => item.id === id);
+      if (!s) return;
+
+      document.getElementById("edit-id").value = s.id;
+      document.getElementById("upsert-title").value = s.title;
+      document.getElementById("upsert-provider").value = s.provider;
+      document.getElementById("upsert-category").value = s.category;
+      document.getElementById("upsert-amount").value = s.amount;
+      document.getElementById("upsert-minscore").value = s.minScore;
+      document.getElementById("upsert-maxincome").value = s.maxIncome;
+      document.getElementById("upsert-level").value = s.level || "Undergraduate";
+      document.getElementById("upsert-deadline").value = s.deadline;
+
+      document.getElementById("upsert-title-heading").textContent = "Edit Scholarship";
+      document.getElementById("modal-upsert").classList.remove("hidden");
+    };
+
+    window.deleteScholarship = function(id) {
+      deleteTargetId = id;
+      document.getElementById("modal-confirm").classList.remove("hidden");
+    };
+
+    document.getElementById("confirm-cancel").addEventListener("click", () => {
+      document.getElementById("modal-confirm").classList.add("hidden");
+      deleteTargetId = null;
+    });
+
+    document.getElementById("confirm-ok").addEventListener("click", () => {
+      if (deleteTargetId) {
+        scholarships = scholarships.filter(s => s.id !== deleteTargetId);
+        saveData();
+        renderAdminTable();
+        renderDirectory();
+        renderHomeFeatured();
+        showNotification("Scholarship deleted from database.");
+      }
+      document.getElementById("modal-confirm").classList.add("hidden");
+      deleteTargetId = null;
+    });
+
+    // 7. Initialization & Event Listeners
+    document.addEventListener("DOMContentLoaded", () => {
+      initData();
+      renderHomeFeatured();
+
+      // Navigation
+      document.getElementById("tab-btn-home").addEventListener("click", () => setTab("home"));
+      document.getElementById("tab-btn-profile").addEventListener("click", () => setTab("profile"));
+      document.getElementById("tab-btn-all").addEventListener("click", () => setTab("all"));
+      document.getElementById("tab-btn-admin").addEventListener("click", () => setTab("admin"));
+
+      // Hero Buttons
+      document.getElementById("home-btn-check").addEventListener("click", () => setTab("profile"));
+      document.getElementById("home-btn-browse").addEventListener("click", () => setTab("all"));
+
+      // Live Profile Sliders
+      const scoreInp = document.getElementById("prof-score");
+      const scoreTxt = document.getElementById("score-display");
+      scoreInp.addEventListener("input", (e) => {
+        scoreTxt.textContent = `${e.target.value}%`;
+        checkStudentEligibility();
+      });
+
+      const incomeInp = document.getElementById("prof-income");
+      const incomeTxt = document.getElementById("income-display");
+      incomeInp.addEventListener("input", (e) => {
+        incomeTxt.textContent = `₹${parseInt(e.target.value).toLocaleString('en-IN')}`;
+        checkStudentEligibility();
+      });
+
+      document.getElementById("btn-check-eligibility").addEventListener("click", checkStudentEligibility);
+
+      // Demo Profile Pre-fill
+      document.getElementById("btn-load-demo").addEventListener("click", () => {
+        document.getElementById("prof-name").value = "Ayush Pathania";
+        document.getElementById("prof-reg").value = "12622597";
+        document.getElementById("prof-score").value = "85";
+        scoreTxt.textContent = "85%";
+        document.getElementById("prof-income").value = "350000";
+        incomeTxt.textContent = "₹3,50,000";
+        document.getElementById("prof-level").value = "Undergraduate";
+        document.getElementById("prof-gender").value = "Male";
+        document.getElementById("prof-category").value = "General";
+        checkStudentEligibility();
+        showNotification("Loaded demo profile for Ayush Pathania (12622597)");
+      });
+
+      // Toggle Ineligible List
+      document.getElementById("toggle-ineligible-btn").addEventListener("click", () => {
+        const box = document.getElementById("ineligible-cards-box");
+        box.classList.toggle("hidden");
+      });
+
+      // Directory search & filters
+      document.getElementById("dir-search").addEventListener("input", renderDirectory);
+      document.getElementById("dir-cat").addEventListener("change", renderDirectory);
+      document.getElementById("dir-sort").addEventListener("change", renderDirectory);
+
+      // Admin Auth Modal
+
+
+      document.getElementById("login-cancel-btn").addEventListener("click", () => {
+        document.getElementById("modal-admin-login").classList.add("hidden");
+      });
+
+      document.getElementById("admin-login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const u = document.getElementById("login-user").value.trim();
+        const p = document.getElementById("login-pass").value.trim();
+
+        if (u === "admin" && (p === "admin123" || p === "2026")) {
+          isAdminUnlocked = true;
+          document.getElementById("modal-admin-login").classList.add("hidden");
+          document.getElementById("nav-admin-text").textContent = "Admin (Unlocked)";
+          showNotification("Admin unlocked successfully!");
+          setTab("admin");
+        } else {
+          document.getElementById("login-error").classList.remove("hidden");
+        }
+      });
+
+      document.getElementById("admin-lock-btn").addEventListener("click", () => {
+        isAdminUnlocked = false;
+        document.getElementById("nav-admin-text").textContent = "Admin";
+        showNotification("Admin locked.");
+        setTab("home");
+      });
+
+      // Admin Upsert
+      document.getElementById("admin-add-btn").addEventListener("click", () => {
+        document.getElementById("upsert-form").reset();
+        document.getElementById("edit-id").value = "";
+        document.getElementById("upsert-title-heading").textContent = "Add Scholarship";
+        document.getElementById("modal-upsert").classList.remove("hidden");
+      });
+
+      document.getElementById("upsert-cancel-btn").addEventListener("click", () => {
+        document.getElementById("modal-upsert").classList.add("hidden");
+      });
+
+      document.getElementById("upsert-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const id = document.getElementById("edit-id").value;
+        const title = document.getElementById("upsert-title").value.trim();
+        const provider = document.getElementById("upsert-provider").value.trim();
+        const category = document.getElementById("upsert-category").value;
+        const amount = parseInt(document.getElementById("upsert-amount").value);
+        const minScore = parseInt(document.getElementById("upsert-minscore").value);
+        const maxIncome = parseInt(document.getElementById("upsert-maxincome").value);
+        const level = document.getElementById("upsert-level").value;
+        const deadline = document.getElementById("upsert-deadline").value;
+
+        if (id) {
+          const idx = scholarships.findIndex(s => s.id === id);
+          if (idx !== -1) {
+            scholarships[idx] = { ...scholarships[idx], title, provider, category, amount, minScore, maxIncome, level, deadline };
+            showNotification("Scholarship updated!");
+          }
+        } else {
+          const newId = `SCH-${Date.now().toString().slice(-4)}`;
+          scholarships.unshift({
+            id: newId, title, provider, category, amount, minScore, maxIncome, level, deadline, gender: "Any"
+          });
+          showNotification("New scholarship added!");
+        }
+
+        saveData();
+        document.getElementById("modal-upsert").classList.add("hidden");
+        renderAdminTable();
+        renderDirectory();
+        renderHomeFeatured();
+      });
+    });
+  </script>
+</body>
+</html>
